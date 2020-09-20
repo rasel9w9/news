@@ -4,80 +4,84 @@
 	<li>
 		<i class="icon-home"></i>
 		<a href="index.html">Home</a>
-		<i class="icon-angle-right"></i> 
+		<i class="icon-angle-right"></i>
 	</li>
 	<li>
 		<i class="icon-edit"></i>
 		<a href="#">Forms</a>
 	</li>
 </ul>
-@if(in_array('6',$rolls))
+@if(in_array('22',$rolls))
 <div class="row-fluid sortable">
 <div class="box span12">
 	<div class="box-header" data-original-title>
-		<h2><i class="halflings-icon edit"></i><span class="break"></span>Add Category</h2>
-		<div class="box-icon">
-			<a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
-			<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
-			<a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
-		</div>
+		<h2><i class="halflings-icon edit"></i><span class="break"></span>Add Advertisement</h2>
 	</div>
 	<div class="box-content">
-		@if(session('cat_msg'))
-		<div class="{{session('class')}}">
-			<button type="button" class="close" data-dismiss="alert">×</button>
-			<h4><strong>Well done!</strong> {{session('cat_msg')}} </h4>
-		</div>
-		@endif
-		<form class="form-horizontal for-validation-form" action="{{route('updateCat',$category->category_id)}}" method='post'>
+		<form class="form-horizontal for-validation-form" action="{{URL::to('admin/save_advertisement')}}" method='post' enctype="multipart/form-data">
 		@csrf
 		  <fieldset>
 				<div class="control-group">
-				  <label class="control-label" for="typeahead">Category Name </label>
+				  <label class="control-label" for="typeahead">Advertisement Name </label>
 				  <div class="controls">
-					<input type="text" class="span6 typeahead" id="typeahead" name='category_name' value="<?=$category->category_name?>">
+					<input type="text" class="span6 typeahead" id="typeahead" name='advertisement_name' value="{{$advertisement->advertisement_name}}">
 				  </div>
-				  <div class='controls'>@error('category_name') {{$message}} @enderror</div>
+				  <div class='controls error'>@error('advertisement_name') {{$message}} @enderror</div>
 				</div>
 				<div class="control-group">
-				  <label class="control-label" for="typeahead">Category Type </label>
+				  <label class="control-label" for="typeahead">Advertisement Location </label>
 				  <div class="controls">
-					<select id="cat-type" class="form-control" name="category_type">
-						<option value="<?=$category->category_type?>"></option>
-						<option value="1">category</option>
-						<option value="2">Page</option>
-						<option value="3">Gallary</option>
-						<option value="4">Videos</option>
+				  @php
+				  	$adlocations=DB::table('ad_location')->get();
+					$selectedLoacation=$advertisement->advertisement_location;
+				  @endphp
+				  	<select id="advertisement-location" class="form-control" name="advertisement_location">
+					@foreach($adlocations as $adlocation)
+					<?php $addlocation->location_id==$selectedLoacation?$sl="selected":$sl=null;?>
+						<option {{@$sl}} value="{{$addlocation->location_id}}">
+							{{$adlocation->location_name}}
+						</option>
+					@endforeach
 					</select>
 				  </div>
-				  <div class='controls'>@error('category_type') {{$message}} @enderror</div>
+				  <div class='controls'>@error('advertisement_location') {{$message}} @enderror</div>
 				</div>
-				<div class="control-group hidden-phone">
-				  <label class="control-label" for="textarea2">Category Description</label>
+				<div class="control-group">
+					<label class="control-label" for="fileInput">Advertiement Image</label>
+					<div class="controls">
+						<input class="input-file uniform_on" id="fileInput" type="file" name='advertisement_image' placeholder='Advertisement Image'>
+					</div>
+					<div class='controls error'>@error('advertisement_image') {{$message}} @enderror</div>
+				</div>
+				<div class="control-group">
+				  <label class="control-label" for="typeahead">Advertisement URL </label>
 				  <div class="controls">
-					<textarea class="cleditor" id="textarea2" rows="3" name='category_description'><?=$category->category_description;?></textarea>
+					<input type="url" class="span6 typeahead" name='advertisement_url' value="<?=old('advertisement_url')?>">
 				  </div>
-				  <div class='controls'>@error('category_description') {{$message}} @enderror</div>
+				  <div class='controls error'>@error('advertisement_url') {{$message}} @enderror</div>
 				</div>
 				<div class="control-group hidden-phone">
 				  <label class="control-label" for="textarea2">Publication Status</label>
 				  <div class="controls">
-					@if($category->category_status==1)
-					<input checked type='checkbox' name='category_status' value='1'/>
-					@else
-					<input type='checkbox' name='category_status' value='1'/>
-					@endif
+					<input type='checkbox' name='advertisement_status' value='1'/>
 				  </div>
-				  <div class='controls'>@error('category_status') {{$message}} @enderror</div>
+				  <div class='controls error'>@error('advertisement_status') {{$message}} @enderror</div>
+				</div>
+				<div class="control-group hidden-phone">
+				  <label class="control-label" for="textarea2">End Date</label>
+				  <div class="controls">
+					<input type='date' name='end_at' value="<?=old('end_at')?>"/>
+				  </div>
+				  <div class='controls error'>@error('end_at') {{$message}} @enderror</div>
 				</div>
 				<div class="form-actions">
-				  <button type="submit" class="btn btn-primary">Update Category</button>
+				  <button type="submit" class="btn btn-primary">Update Advertisement</button>
 				  <button type="reset" class="btn">Reset</button>
 				</div>
 		  </fieldset>
-		</form>   
+		</form>
 	</div>
-	</div>
+</div>
 </div>
 @else
 	<h4>You dont have permission To Edit A Category.Please Contact with Super Admin</h4>

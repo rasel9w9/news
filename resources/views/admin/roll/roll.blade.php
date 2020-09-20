@@ -11,9 +11,7 @@
 		<a href="#">Roll</a>
 	</li>
 </ul>
-<style>
-.error{color:maroon;}
-</style>
+<style> .error{color:maroon;} </style>
 <div class="row-fluid sortable showhide" style='display:none'>
 <div class="box span12">
 	<div class="box-header" data-original-title>

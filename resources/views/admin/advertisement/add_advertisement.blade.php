@@ -11,6 +11,7 @@
 		<a href="#">Forms</a>
 	</li>
 </ul>
+<style> .error{color:maroon;} </style>
 <div class="row-fluid sortable showhide" style='display:none'>
 @if(in_array('21',$rolls))
 <div class="box span12">
@@ -26,7 +27,7 @@
 				  <div class="controls">
 					<input type="text" class="span6 typeahead" id="typeahead" name='advertisement_name' value="<?=old('advertisement_name')?>">
 				  </div>
-				  <div class='controls'>@error('advertisement_name') {{$message}} @enderror</div>
+				  <div class='controls error'>@error('advertisement_name') {{$message}} @enderror</div>
 				</div>
 				<div class="control-group">
 				  <label class="control-label" for="typeahead">Advertisement Location </label>
@@ -51,14 +52,21 @@
 				  <div class="controls">
 					<input type="url" class="span6 typeahead" name='advertisement_url' value="<?=old('advertisement_url')?>">
 				  </div>
-				  <div class='controls'>@error('advertisement_url') {{$message}} @enderror</div>
+				  <div class='controls error'>@error('advertisement_url') {{$message}} @enderror</div>
 				</div>
 				<div class="control-group hidden-phone">
 				  <label class="control-label" for="textarea2">Publication Status</label>
 				  <div class="controls">
 					<input type='checkbox' name='advertisement_status' value='1'/>
 				  </div>
-				  <div class='controls'>@error('advertisement_status') {{$message}} @enderror</div>
+				  <div class='controls error'>@error('advertisement_status') {{$message}} @enderror</div>
+				</div>
+				<div class="control-group hidden-phone">
+				  <label class="control-label" for="textarea2">End Date</label>
+				  <div class="controls">
+					<input type='date' name='end_at' value="<?=old('end_at')?>"/>
+				  </div>
+				  <div class='controls error'>@error('end_at') {{$message}} @enderror</div>
 				</div>
 				<div class="form-actions">
 				  <button type="submit" class="btn btn-primary">Add Advertisement</button>
@@ -99,6 +107,7 @@
 					  <th>Url</th>
 					  <th>Location</th>
 					  <th>Status</th>
+					  <th>End Date</th>
 					  <th>Action</th>
 				  </tr>
 			  </thead>
@@ -119,14 +128,15 @@
 						<span class="label green">{{"Active"}}</span>
 						@endif
 					</td>
+					<td class="center"><?=$advertisement->end_at?></td>
 					<td class="center">
 					@if(in_array('22',$rolls))
 						@if($advertisement->advertisement_status==0)
-						<a class="btn btn-success" href="{{route('catStatus',[$advertisement->advertisement_id,1])}}">
+						<a class="btn btn-success" href="{{route('adStatus',[$advertisement->advertisement_id,1])}}">
 							<i class="halflings-icon white thumbs-up"></i>
 						</a>
 						@else
-							<a class="btn btn-danger" href="{{route('catStatus',[$advertisement->advertisement_id,0])}}">
+							<a class="btn btn-danger" href="{{route('adStatus',[$advertisement->advertisement_id,0])}}">
 								<i class="halflings-icon white thumbs-down"></i>
 							</a>
 						@endif

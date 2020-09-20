@@ -10,9 +10,8 @@
 		<a href="#">Forms</a>
 	</li>
 </ul>
-<style> .error{color:maroon;} </style>
-<div class="row-fluid sortable showhide" style='display:none'>
-<?php if(in_array('21',$rolls)): ?>
+<?php if(in_array('22',$rolls)): ?>
+<div class="row-fluid sortable">
 <div class="box span12">
 	<div class="box-header" data-original-title>
 		<h2><i class="halflings-icon edit"></i><span class="break"></span>Add Advertisement</h2>
@@ -24,7 +23,7 @@
 				<div class="control-group">
 				  <label class="control-label" for="typeahead">Advertisement Name </label>
 				  <div class="controls">
-					<input type="text" class="span6 typeahead" id="typeahead" name='advertisement_name' value="<?=old('advertisement_name')?>">
+					<input type="text" class="span6 typeahead" id="typeahead" name='advertisement_name' value="<?php echo e($advertisement->advertisement_name); ?>">
 				  </div>
 				  <div class='controls error'><?php $__errorArgs = ['advertisement_name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -38,9 +37,14 @@ unset($__errorArgs, $__bag); ?></div>
 				<div class="control-group">
 				  <label class="control-label" for="typeahead">Advertisement Location </label>
 				  <div class="controls">
+				  <?php
+				  	$adlocations=DB::table('ad_location')->get();
+					$selectedLoacation=$advertisement->advertisement_location;
+				  ?>
 				  	<select id="advertisement-location" class="form-control" name="advertisement_location">
 					<?php $__currentLoopData = $adlocations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $addlocation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-						<option value="<?php echo e($addlocation->location_id); ?>"><?php echo e($addlocation->location_name); ?></option>
+					<?php $addlocation->location_id==$selectedLoacation?$s="selected":$s=null;?>
+						<option <?php echo e(@$s); ?> value="<?php echo e($addlocation->location_id); ?>"><?php echo e($addlocation->location_name); ?></option>
 					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 					</select>
 				  </div>
@@ -110,96 +114,17 @@ endif;
 unset($__errorArgs, $__bag); ?></div>
 				</div>
 				<div class="form-actions">
-				  <button type="submit" class="btn btn-primary">Add Advertisement</button>
+				  <button type="submit" class="btn btn-primary">Update Advertisement</button>
 				  <button type="reset" class="btn">Reset</button>
 				</div>
 		  </fieldset>
 		</form>
 	</div>
 </div>
+</div>
 <?php else: ?>
-	<h4>You dont have permission To Add Advertisement.Please Contact with Super Admin</h4>
+	<h4>You dont have permission To Edit A Category.Please Contact with Super Admin</h4>
 <?php endif; ?>
-</div>
-<?php if(session('adv_msg')): ?>
-<div class="<?php echo e(session('class')); ?>">
-	<button type="button" class="close" data-dismiss="alert">×</button>
-	<h4><strong>Well done!</strong> <?php echo e(session('adv_msg')); ?> </h4>
-</div>
-<?php endif; ?>
-<div class='row-fluid sortable'>
-	<div class='box span12'>
-		<button class="btn btn-large btn-primary" id='showhide' html-text="+ Add Advertisement">+ Add Advertisement</button>
-		<div class="box-header" data-original-title>
-			<h2><i class="halflings-icon edit"></i><span class="break"></span>All Advertisements</h2>
-			<div class="box-icon">
-				<a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
-				<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
-				<!--<a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>-->
-			</div>
-		</div>
-		<div class='box-content'>
-			<table class="table table-striped table-bordered bootstrap-datatable datatable">
-			  <thead>
-				  <tr>
-					  <th width='5%'>ID</th>
-					  <th>Name</th>
-					  <th>Image</th>
-					  <th>Url</th>
-					  <th>Location</th>
-					  <th>Status</th>
-					  <th>End Date</th>
-					  <th>Action</th>
-				  </tr>
-			  </thead>
-			  <tbody>
-			  <?php $__currentLoopData = $allAdvertisements; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $advertisement): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-				<tr>
-					<td class="center"><?=$advertisement->advertisement_id?></td>
-					<td class="center"><?=$advertisement->advertisement_name?></td>
-					<td class="center">
-						<img src="<?php echo e(url('storage/app/'.$advertisement->advertisement_image)); ?>" width="75px" height="75px">
-					</td>
-					<td class="center"><?=$advertisement->advertisement_url?></td>
-					<td class="center"><?=$advertisement->advertisement_location?></td>
-					<td class="center">
-						<?php if($advertisement->advertisement_status==0): ?>
-						<span class="label label-important"><?php echo e("Inactive"); ?></span>
-						<?php else: ?>
-						<span class="label green"><?php echo e("Active"); ?></span>
-						<?php endif; ?>
-					</td>
-					<td class="center"><?=$advertisement->end_at?></td>
-					<td class="center">
-					<?php if(in_array('22',$rolls)): ?>
-						<?php if($advertisement->advertisement_status==0): ?>
-						<a class="btn btn-success" href="<?php echo e(route('adStatus',[$advertisement->advertisement_id,1])); ?>">
-							<i class="halflings-icon white thumbs-up"></i>
-						</a>
-						<?php else: ?>
-							<a class="btn btn-danger" href="<?php echo e(route('adStatus',[$advertisement->advertisement_id,0])); ?>">
-								<i class="halflings-icon white thumbs-down"></i>
-							</a>
-						<?php endif; ?>
-						<?php if(in_array('22',$rolls)): ?>
-							<a class="btn btn-info" href="<?php echo e(URL::to('admin/edit_advertisement/'.$advertisement->advertisement_id)); ?>">
-								<i class="halflings-icon white edit"></i>
-							</a>
-						<?php endif; ?>
-						<?php if(in_array('23',$rolls)): ?>
-							<a class="btn btn-danger" href="<?php echo e(URL::to('admin/delete_advertisement/'.$advertisement->advertisement_id)); ?>">
-								<i class="halflings-icon white trash"></i>
-							</a>
-						<?php endif; ?>
-					<?php endif; ?>
-					</td>
-				</tr>
-				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-			  </tbody>
-		  </table>
-		</div>
-	</div>
-</div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin/admin_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\xampp\htdocs\news\resources\views/admin/advertisement/add_advertisement.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin/admin_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\xampp\htdocs\news\resources\views/admin/advertisement/edit_advertisement.blade.php ENDPATH**/ ?>

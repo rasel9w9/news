@@ -25,12 +25,14 @@ class AdvertisementController extends Controller
 	}
 
 	public function save_advertisement(Request $request){
+		$date=date('d-M-Y');
 		$validate=$request->validate([
 			'advertisement_name'=>['string','required'],
 			'advertisement_status'=>['boolean'],
 			'advertisement_url'=>['string','required','url'],
 			'advertisement_location'=>['string','required'],
-			'advertisement_image'=>['required',"image"]
+			'advertisement_image'=>['required',"image"],
+			'end_at'=>['required','date',"after:$date"]
 		]);
 		//This if condition for solving cannot be null 'publication_status' column solution...
 		$data=[
@@ -39,7 +41,8 @@ class AdvertisementController extends Controller
 			'advertisement_url'=>$request->advertisement_url,
 			'advertisement_status'=>$request->advertisement_status,
 			'created_by'=>session('admin_name'),
-			'created_at'=>now()
+			'created_at'=>now(),
+			'end_at'=>date('Y-m-d',strtotime($request->end_at)),
 		];
 		if($adImage=$request->file('advertisement_image')){
 			//$path="uploads/ad_image/".date('Y').'/'.date('m').'/';
@@ -65,7 +68,7 @@ class AdvertisementController extends Controller
 	}
 
 	public function publication($id,$status){
-		$update=DB::table('advertisement_table')->where('advertisement_id',$id)
+		$update=DB::table('advertisement')->where('advertisement_id',$id)
 				->update([
 					'advertisement_status'=>$status
 				]);
@@ -98,7 +101,7 @@ class AdvertisementController extends Controller
 		return redirect()->back();
 	}
 	public function edit_advertisement($id){
-		$advertisement=DB::table('advertisement_table')->where('advertisement_id',$id)->first();
+		$advertisement=DB::table('advertisement')->where('advertisement_id',$id)->first();
 		if($advertisement){
 		return view('admin.advertisement.edit_advertisement',compact('advertisement'));
 		}else{echo "There is an error.Please try again";}
