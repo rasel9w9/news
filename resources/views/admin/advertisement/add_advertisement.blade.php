@@ -128,7 +128,9 @@
 						<span class="label green">{{"Active"}}</span>
 						@endif
 					</td>
-					<td class="center"><?=$advertisement->end_at?></td>
+					<td class="center">
+					<?php echo date('d-M-Y',strtotime($advertisement->end_at));?>
+					</td>
 					<td class="center">
 					@if(in_array('22',$rolls))
 						@if($advertisement->advertisement_status==0)

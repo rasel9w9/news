@@ -169,7 +169,9 @@ unset($__errorArgs, $__bag); ?></div>
 						<span class="label green"><?php echo e("Active"); ?></span>
 						<?php endif; ?>
 					</td>
-					<td class="center"><?=$advertisement->end_at?></td>
+					<td class="center">
+					<?php echo date('d-M-Y',strtotime($advertisement->end_at));?>
+					</td>
 					<td class="center">
 					<?php if(in_array('22',$rolls)): ?>
 						<?php if($advertisement->advertisement_status==0): ?>

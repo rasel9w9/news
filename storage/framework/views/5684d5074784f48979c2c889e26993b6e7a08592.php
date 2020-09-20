@@ -42,9 +42,14 @@ unset($__errorArgs, $__bag); ?></div>
 					$selectedLoacation=$advertisement->advertisement_location;
 				  ?>
 				  	<select id="advertisement-location" class="form-control" name="advertisement_location">
-					<?php $__currentLoopData = $adlocations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $addlocation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-					<?php $addlocation->location_id==$selectedLoacation?$s="selected":$s=null;?>
-						<option <?php echo e(@$s); ?> value="<?php echo e($addlocation->location_id); ?>"><?php echo e($addlocation->location_name); ?></option>
+					<?php $__currentLoopData = $adlocations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $adlocation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<?php
+							$adlocation->location_id==$selectedLoacation?$sl="selected":$sl=null;
+						?>
+						<option <?php echo e(@$sl); ?> value="<?php echo e($adlocation->location_id); ?>">
+							<?php echo e($adlocation->location_name); ?>
+
+						</option>
 					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 					</select>
 				  </div>
@@ -60,6 +65,7 @@ unset($__errorArgs, $__bag); ?></div>
 				<div class="control-group">
 					<label class="control-label" for="fileInput">Advertiement Image</label>
 					<div class="controls">
+						<img src="<?php echo e(url('storage/app/'.$advertisement->advertisement_image)); ?>" width="75px" height="75px">
 						<input class="input-file uniform_on" id="fileInput" type="file" name='advertisement_image' placeholder='Advertisement Image'>
 					</div>
 					<div class='controls error'><?php $__errorArgs = ['advertisement_image'];
@@ -74,7 +80,7 @@ unset($__errorArgs, $__bag); ?></div>
 				<div class="control-group">
 				  <label class="control-label" for="typeahead">Advertisement URL </label>
 				  <div class="controls">
-					<input type="url" class="span6 typeahead" name='advertisement_url' value="<?=old('advertisement_url')?>">
+					<input type="url" class="span6 typeahead" name='advertisement_url' value="<?php echo e($advertisement->advertisement_url); ?>">
 				  </div>
 				  <div class='controls error'><?php $__errorArgs = ['advertisement_url'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -88,7 +94,10 @@ unset($__errorArgs, $__bag); ?></div>
 				<div class="control-group hidden-phone">
 				  <label class="control-label" for="textarea2">Publication Status</label>
 				  <div class="controls">
-					<input type='checkbox' name='advertisement_status' value='1'/>
+				  	<?php
+					$advertisement->advertisement_status==1?$chk="checked":$chk=null;
+					?>
+					<input <?php echo e($chk); ?> type='checkbox' name='advertisement_status' value='1'/>
 				  </div>
 				  <div class='controls error'><?php $__errorArgs = ['advertisement_status'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -102,7 +111,8 @@ unset($__errorArgs, $__bag); ?></div>
 				<div class="control-group hidden-phone">
 				  <label class="control-label" for="textarea2">End Date</label>
 				  <div class="controls">
-					<input type='date' name='end_at' value="<?=old('end_at')?>"/>
+					<input type='date' name='end_at' value="<?php echo e($advertisement->end_at); ?>"/>
+					<span>mm/dd/yyyy</span>
 				  </div>
 				  <div class='controls error'><?php $__errorArgs = ['end_at'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
