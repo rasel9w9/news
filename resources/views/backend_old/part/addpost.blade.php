@@ -1,0 +1,274 @@
+<!--market updates updates-->
+<div class="col-md-12 col-sm-12 col-xs-12">			
+	<div class="box_layout col-md-12 col-sm-12 col-xs-12">			
+		<h3 class="no_padding"><i class="fa fa-plus"></i> New Post</h3>
+		<div class="alert alert-success alert-dismissible fade in">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>Success !</strong>
+		</div>
+	</div>
+	<form method="POST"  action="<?= url('/');?>save-post">
+		<div class=" jumbotron no_padding right_padding col-md-5 col-sm-5 col-xs-12">				
+			<div class="panel panel-mos">
+				<div class="panel-heading">
+					<h3 class="panel-title">Post Info</h3>
+					<span class="pull-right clickable"><i class="fa fa-plus"></i></span>
+				</div>
+				<div class="panel-body">				
+					<div class="form-group form-group-sm">
+						<label for="post-title">Post Title:</label>
+						<input type="text" class="form-control" name="post_title" placeholder="Post Title" id="post-title" required>
+					</div>
+
+					<div class="form-group form-group-sm">
+						<label for="post-sub-title">Post Sub Title:</label>
+						<input type="text" class="form-control" name="post_sub_title" placeholder="Post Sub Title" id="post-sub-title">
+					</div>
+					
+					<div class="form-group form-group-sm">
+						<label>Post Category:</label>
+						<div style="height:158px;overflow-y:scroll;border:1px solid lightgray;padding:15px;" class="checkbox">
+							<label style="width:50%;float:left;font-size:13px;">
+								<input type="checkbox" name="post_category_id[]" value="">cat1 
+							</label>
+							<label style="width:50%;float:left;font-size:13px;">
+								<input type="checkbox" name="post_category_id[]" value="">cat2
+							</label>
+							<label style="width:50%;float:left;font-size:13px;">
+								<input type="checkbox" name="post_category_id[]" value="">cat3
+							</label>
+							<span class="clearfix"></span>
+						</div>
+					</div>
+					<div class="form-group form-group-sm archive" >
+						<label for="post-image">Post Image:</label>
+						<button class="archive-btn" type="button" data-toggle="modal" data-target="#post-img-modal">Browse</button>
+						<input type="hidden" class="archive_image form-control"   name="post_image" id="post-image"required value="">
+						<img src=""  class="archive-img " id="archive_image">
+						
+					</div>
+					<div class="form-group form-group-sm">
+						<label for="image-caption">Image Caption:</label>
+						<input type="text" class="form-control" name="image_caption" id="image-caption" placeholder="Image Caption">
+					</div>
+					<br>
+				</div>
+			</div>
+		</div>
+
+		<div class=" jumbotron no_padding col-md-7 col-sm-7 col-xs-12">
+
+			<div class="panel panel-mos">
+				<div class="panel-heading">
+					<h3 class="panel-title">Post Selection</h3>
+					<span class="pull-right clickable"><i class="fa fa-plus"></i></span>
+				</div>
+				<div class="panel-body">
+					<div class="form-group form-group-sm">
+						<label>Scrolling:</label><br>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">			
+							<label class="btn btn-default active">
+								<input type="radio" name="scroll" value="1" autocomplete="off" checked> YES
+							</label>
+							<label class="btn btn-default">
+								<input type="radio" name="scroll" value="0" autocomplete="off"> NO
+							</label>
+						</div>
+					</div>
+					<div class="form-group form-group-sm">
+						<label>Lead News:</label><br>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">			
+							<label class="btn btn-default active">
+								<input type="radio" name="lead_news" value="1" autocomplete="off" checked> YES
+							</label>
+							
+							<label class="btn btn-default">
+								<input type="radio" name="lead_news" value="0" autocomplete="off"> NO
+							</label>
+						</div>
+					</div>
+					<div class="form-group form-group-sm">
+						<label>Top News:</label><br>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">			
+							
+							<label class="btn btn-default active">
+								<input type="radio" name="top_news" value="1" autocomplete="off" checked> YES
+							</label>
+							
+							<label class="btn btn-default">
+								<input type="radio" name="top_news" value="0" autocomplete="off"> NO
+							</label>
+						</div>
+					</div>
+					<div class="form-group form-group-sm">
+						<label>Category Pin News:</label><br>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">			
+							<label class="btn btn-default active">
+								<input type="radio" name="category_pin" value="1" autocomplete="off" checked> YES
+							</label>
+							
+							<label class="btn btn-default">
+								<input type="radio" name="category_pin" value="0" autocomplete="off"> NO
+							</label>
+						</div>
+					</div>
+					<div class="form-group form-group-sm">
+						<label for="reporter">Reporter:</label>	
+						<select class="form-control" id="reporter" name="reporter">
+							<option value="1">Reporter 1</option>
+							<option value="1">Reporter 2</option>
+							<option value="1">Reporter 3</option>
+						</select>
+					</div>
+					<div class="form-group form-group-sm">
+						<label for="related-news">Ralated News ID:</label>
+						<input type="text" class="form-control" name="related_news_id" id="related-news" placeholder="Related News ID (Comma Separeted No Space)">
+					</div>
+					<div class="form-group form-group-sm">
+						<label>Post Status:</label><br>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">			
+							<label class="btn btn-default active">
+								<input type="radio" name="post_status" value="1" autocomplete="off" checked> Publish
+							</label>
+							
+							<label class="btn btn-default">
+								<input type="radio" name="post_status" value="0" autocomplete="off"> Draft
+							</label>
+						</div>
+					</div>
+					<div class="form-group form-group-sm">
+						<label for="video-id">Video Youtube ID:</label>
+						<input type="text" class="form-control" name="video_id" id="video-id" placeholder="Video Youtube ID">
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 col-sm-12 col-xs-12 no_padding">
+			<div class="panel panel-mos">
+				<div class="panel-heading">
+					<h3 class="panel-title">Post Description</h3>
+					<span class="pull-right clickable"><i class="fa fa-plus"></i></span>
+				</div>
+				<div class="panel-body">
+					<div class="form-group form-group-sm">
+						<label for="summernote">Post Description:</label>
+						<textarea id="summernotee" rows="10" name="post_description" placeholder="Post Description" class="form-control"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 col-sm-12 col-xs-12 no_padding">
+			<div class="panel panel-mos">
+				<div class="panel-heading">
+					<h3 class="panel-title">SEO Information</h3>
+					<span class="pull-right clickable"><i class="fa fa-plus"></i></span>
+				</div>
+				<div class="panel-body">
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="form-group form-group-sm">
+							<label for="seo-keywords">SEO Keyword:</label><br>
+							<input rows="5" type="text" class="tagsinput form-control" name="seo_keyword" id="seo-keyword" value="" placeholder="Keywords">
+						</div>
+					</div>				
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="form-group form-group-sm">
+							<label>SEO Description:</label>
+							<textarea rows="5" name="seo_description" placeholder="SEO Description" class="form-control"></textarea>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+		<div class="box_layout col-md-12 col-sm-12 col-xs-12">
+			<button type="submit" class="button_center btn btn-primary">Add Post</button>
+		</div>
+	</form> 
+</div>
+<div class="modal fade right" id="post-img-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+	<div class="modal-dialog modal-full-height modal-right modal-lg" role="document">
+	    <div class="modal-content">
+	      	<div class="modal-header">
+		        <h4 class="modal-title" id="myModalLabel">Image Archive
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+		        </h4>
+	      	</div>
+	      	<div class="modal-body col-md-12 col-sm-12 col-xs-12">
+	        	<div class="col-md-12 col-sm-12 col-xs-12 no_padding">
+	        		<ul class="nav nav-tabs">
+					    <li class="active"><a data-toggle="tab" href="#upload">Upload</a></li>
+					    <li><a data-toggle="tab" href="#media" class="al_arc_img">All Media</a></li>
+				  	</ul>
+
+				  	<div class="tab-content col-md-12 col-sm-12 col-xs-12 no_padding">
+					    <div id="upload" class="tab-pane fade in active">
+					      	<div class="ulImg">
+					      		<!-- <p>Drag And Drop Files To Upload</p>
+					      		<p>or</p>
+					      		<p>
+					      			<label class="fileContainer">
+									    Chooose File <span><i class="fa fa-upload"></i></span>
+									    <input type="file"/>
+									</label>
+					      		</p> -->
+
+					      		<form  action="<?= url('/');?>save-archive-media" class="dragImg" id='fileupload'>
+			
+								</form>
+					      	</div>
+					    </div>
+					    <div id="media" class="tab-pane fade col-md-12 col-sm-12 col-xs-12 no_padding">
+					    	<br>
+						    	<div class="col-md-12 col-sm-12 col-xs-12 no_padding">
+						    		<form class="form-inline">
+							    		<input type="text" class="form-control pImgSearch search_media" name="" id="imgSearch" placeholder="Search...">	
+						    		</form>
+						    		<div class="clear"></div>
+						    		<br>
+						    	</div>
+						    	<p class="search_key">Showing All Media Data:</p><br>
+						      	<div class="col-md-12 col-sm-12 col-xs-12 no_padding search_arch_results">	
+							      	<div class="col-md-12 col-sm-12 col-xs-12 no_padding ">
+										<div class="col-md-3 col-sm-4 col-xs-12">
+											<div class="mImg">
+												
+												<img src="<?= url('/')?>" alt="">
+											
+												<div class="img-hov">
+													<a mimg-name=""
+													mimg-url=""  class="btn" data-dismiss="modal">Insert</a>
+												</div>
+											</div>
+										</div> 
+							      	</div>
+						      </div>
+					    </div>
+					    
+					</div>
+
+
+	        	</div>
+	      	</div>
+	      	<div class="modal-footer justify-content-center">
+		        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+		        
+	      	</div>
+	    </div>
+	</div>
+</div>
+
+
+
+
+
+<link href='<?= url('') ?>files/backend/css/dropzone.css' type='text/css' rel='stylesheet'>
+<script src='<?= url('') ?>files/backend/js/dropzone.js' type='text/javascript'></script>
+
+<script src="//cdn.ckeditor.com/4.11.4/full/ckeditor.js"></script>
+<script>
+	CKEDITOR.replace('summernotee');
+
+</script>

@@ -1,0 +1,467 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/favicon.ico">
+    <title>CVOICENEWS24</title>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+	
+	
+    <link href="css/style.css" rel="stylesheet">
+	
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-591693a3c15094a5"></script>
+	
+	<script>
+		
+	
+	function openCity(evt, cityName) {
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" activ", "");
+		}
+		document.getElementById(cityName).style.display = "block";
+		if(evt.currentTarget){
+			evt.currentTarget.className += " activ";
+		}
+		
+	}
+	</script>
+	<script>
+	$(document).ready(function(){
+		
+		$(".defaultOpen").click();
+		$(".defaultOpen").addClass('activ');
+		
+		$(".closeIco").click(function(){
+			$(".fbPage").delay(100).hide(500);			
+		});
+		
+		
+		var modal = $('#myModal');
+		var img = $('.myImg');
+		
+		var modalImg = $("#img01");
+		var modalTxt = $("#modalTxt");
+		
+		img.click(function(){
+			modalImg.attr("src", this.src);
+			modalTxt.text(this.alt);
+			modal.show();
+		});
+
+		$(".close").click(function(){
+			modal.hide();
+		});
+		
+	});
+	</script>
+	
+<script>
+    $(function() {
+ 
+		var sticky_navigation_offset_top = $('#navigation').offset().top;
+		var sticky_navigation = function(){
+      
+			var scroll_top = $(window).scrollTop(); 
+			if (scroll_top > sticky_navigation_offset_top) { 
+				$('#navigation').css({ 'position': 'fixed', 'top':0, 'left':0, 'width':'100%', 'z-index':10});
+				
+			}else {
+				$('#navigation').css({ 'position': 'relative'}); 
+			}
+		};
+		
+		sticky_navigation();
+     
+		$(window).scroll(function() {
+			sticky_navigation();
+		});
+ 
+ 
+    });
+</script>
+</head>
+<body>
+<div class="fbPage">
+	<i class="closeIco material-icons">close</i>
+	<img src="images/cnn.png" alt="image" width="100%" height="auto"/>
+</div>
+<section class="header">
+    <div class="container">
+        <!--Header Logo section & headline Start-->
+            <div class="row lfrtPad">
+                <div class="no-padding col-md-3 col-sm-4 col-xs-12">
+					
+                    <div class="site-logo" >
+                        <a href="#">
+                          <img src="images/logo.png" class="img-responsive" alt="image">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-4 col-xs-12 no-padding">
+					<div class="topads-one">
+                        <a href="#">
+                          <img src="images/ad-1.png" class="img-responsive" alt="image">
+                        </a>
+                    </div>                       
+                </div>
+				<div class="no-padding col-md-3 col-sm-4 col-xs-12">
+					<div class="col-md-12 col-sm-12 col-xs-12 date">
+					   <p>আজ, সোমবার, ৯ মাঘ ১৪২৪, ২২ জানুয়ারী ২০১৮</p>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12 socialHeader">
+						<a class="face" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+						<a class="twit" href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+						<a class="you" href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a>
+						<a class="gol" href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a>
+					</div>
+					<div class="search col-md-12 col-sm-12 col-xs-12">
+					   <form action="" class="searchform" method="POST">
+							<button type="submit" class="searchbutton" name="searchButton"><span class="glyphicon glyphicon-search"></span></button>
+							<input pattern="[^'\x22]+" title="Invalid input" class="searchField" type="text" name="searchField" placeholder="অনুসন্ধান..." required>
+						</form>
+					</div>                      
+                </div>
+            </div>
+          
+			<div class="row lfrtPad no-padding">
+				<h4 class="notice">*** সকাল ৬টা থেকেই গ্যাস থাকে না সকাল ৬টা থেকেই গ্যাস থাকে না সকাল ৬টা থেকেই গ্যাস থাকে না সকাল ৬টা থেকেই গ্যাস থাকে না সকাল ***</h4>
+			</div>
+		
+           <!--Header Logo section End-->
+    </div><!--/container  add-->
+</section>
+<section class="menu-area"> 
+   <!-- Navbar Start -->
+		<div class="container">
+			<div class="row"> 
+				<div class="no-padding col-md-12 col-sm-12 col-xs-12">
+					<nav id="navigation" class="navbar navbar-default" >
+						<!-- Brand and toggle get grouped for better mobile display -->
+		  
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+								 <span class="sr-only">Toggle navigation</span>
+								 <span class="icon-bar"></span>
+								 <span class="icon-bar"></span>
+								 <span class="icon-bar"></span>
+							</button>
+							 <a class="navbar-brand visible-xs visible-sm" rel="home" href="#" title="Buy Sell Rent Everyting">
+                           <img style="width:auto; height:40px; margin-top: -10px;" src="images/logo.jpg">
+                                          </a>
+						</div>
+						 <!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> <span class="sr-only">(current)</span></a></li>
+								<li><a href="#">জাতীয়</a></li>
+								<li><a href="#">রাজনীতি</a></li>
+								<li><a href="#">বানিজ্য</a></li>
+								<li><a href="#">খেলা</a></li>  
+								<li><a href="#">বিনোদন</a></li>
+								<li><a href="#">সাহিত্য-সংস্কৃতি</a></li>
+								<li><a href="#">বিদেশ</a></li>
+								<li><a href="#">লাইফস্টাইল</a></li>
+                                 <li><a href="#">ধর্ম</a></li>							
+								<li><a href="#">বিচিত্র-বিশ্ব</a></li>
+								<li><a href="#">পর্যটন-ভ্রমন</a></li>
+								<li><a href="#">শিক্ষা</a></li>
+								<li><a href="#">আদালত</a></li>
+								<li><a href="#">গণমাধ্যম</a></li>
+								<li><a href="#">নন্দিনী</a></li>
+								<li><a href="#">জেলা-উপজেলা</a></li> 
+								<li><a href="#">তৃতীয় মত</a></li>
+								<li><a href="#">বিশেষ</a></li>
+								<li><a href="#">ফেসবুক</a></li>
+								<li><a href="#">এক্সক্লুসিভ</a></li>
+								<li><a href="#">চসিক</a></li>
+								<li><a href="#">বন্দর-কাস্টমস্</a></li>
+								<li><a href="#">ক্যাম্পাস</a></li>
+								<li><a href="#">জব-কর্ণার</a></li>
+								<li><a href="#">সাক্ষাৎকার</a></li>
+								<li><a href="#">তারুণ্য</a></li>
+								<li><a href="#">জন্মদিন</a></li>
+								<li><a href="#">প্রেস-রিলিজ</a></li>
+								<li><a href="#">রাশিফল</a></li>
+							</ul>
+						</div><!-- /.navbar-collapse -->
+					 
+					</nav>
+				</div>
+			
+				
+			</div>
+			<div class="row updateNews">
+					<div class="no-padding col-md-1 col-xs-4 leatest">
+						 <h4>সর্বশেষ</h4>
+					</div>
+				<div class="col-md-11 col-xs-8 headline">
+				<marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" attribute_name="attribute_value">
+						<h4>
+							<ul class="list-inline" id="news">
+								<li><i class="material-icons">library_add</i> <a href="#">নদীতে সাঁতারে নেমে যুবকের মৃত্যু</a> 
+								</li>
+								<li><i class="material-icons">library_add</i> <a href="#"> ওসি ইমতিয়াজ আহম্মেদ গুরুত্বর আহত</a> 
+								</li>
+								<li><i class="material-icons">library_add</i> <a href="#"> চলছে পরীক্ষামূলক সম্প্রচার</a> 
+								</li>
+							</ul>
+						</h4>
+					</marquee>
+				</div>
+			</div>
+			<!--- Top Add Banner-->
+			 <!-- 
+			<div class="row">
+				<div class="no-padding col-md-12 col-xs-12 col-sm-12">
+					<div class="topads-two">
+						<a href="#"><img src="images/appo.jpg" class="img-responsive" alt="image"/></a>
+					</div>
+				</div>
+			</div> -->
+		   <!-- Top Add End -->
+		</div>
+   <!-- Navbar End -->   
+</section>
+  <!-- Main Three News section Start -->
+<section class="top-three-news">
+    <div class="no-padding container">
+     <!-- Top Three Section News Start -->
+		<div class="row catContents">
+			<div class="topBtmPad col-md-9 col-sm-9 col-xs-12"><!--Five Lead News Start-->
+				<div class="topBtmPad col-md-12 col-xs-12 col-sm-12">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="three-cat-head">
+						   <a href="#"><h3>ছবি</h3></a>
+						</div>
+					</div>
+				</div>
+				
+
+			   <div class="col-md-6 col-sm-6 col-xs-12">
+					<div class="three-news-item">
+						<div class="three-news-image fullImage">
+							<img class="myImg" src="images/4.jpg" alt="সকাল ৬টা থেকেই গ্যাস থাকে না। এরপর সারাদিন গড়িয়ে মধ্যরাতে আসে" />
+							<h3>সকাল ৬টা থেকেই গ্যাস থাকে না। এরপর সারাদিন গড়িয়ে মধ্যরাতে আসে সকাল ৬টা থেকেই গ্যাস থাকে না। এরপর সারাদিন গড়িয়ে মধ্যরাতে আসে</h3>
+						</div>
+						<div class="single-post-author-time">
+							<p>আপডেট <i class="fa fa-clock-o" aria-hidden="true"></i> ০৯:৫৯, জানুয়ারি ২৩</p>
+						</div>
+				    </div>
+				</div>
+			
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<div class="three-news-item">
+						<div class="three-news-image fullImage">
+							<img class="myImg" src="images/5.jpg" alt="৬টা থেকেই গ্যাস থাকে না। এরপর সারাদিন গড়িয়ে মধ্যরাতে আসে" />
+							<h3>৬টা থেকেই গ্যাস থাকে না। এরপর সারাদিন গড়িয়ে মধ্যরাতে আসে</h3>
+						</div>
+						<div class="single-post-author-time">
+							<p>আপডেট <i class="fa fa-clock-o" aria-hidden="true"></i> ০৯:৫৯, জানুয়ারি ২৩</p>
+						</div>
+				    </div>
+				</div>
+				
+				<div id="myModal" class="modal">
+					<span class="close">&times;</span>
+					<img class="modal-content" id="img01">
+					<h3 class="modal-content-h3" id="modalTxt"></h3>
+				</div>
+				
+				<div class="no-padding col-md-12 col-xs-12 col-sm-12">
+					<div class="col-md-12">
+						<div class="center">
+							<div class="pagination">
+								<a href="#">&laquo;</a>
+								<a href="#">1</a>
+								<a href="#" class="active">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<a href="#">5</a>
+								<a href="#">6</a>
+								<a href="#">&raquo;</a>
+							</div>
+						</div>
+					</div>	
+				</div>
+				
+				<!--<div class="no-padding col-md-12 col-xs-12 col-sm-12">
+					<div class="col-md-12">
+						<div class="more-news col-md-12 no-padding">
+							 <a href="#">আরও ভিডিও</a>
+						</div>
+					</div>	
+				</div>-->
+            </div>
+			<div class="topBtmPad col-md-3 col-sm-3 col-xs-12">
+				
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="left-side-add-image">
+					  <a href="#"><img src="images/t.gif" class="img-responsive" alt="image"/></a>
+					</div>
+					
+					<div class="no-padding col-md-12 col-sm-12 col-xs-12">
+						<div class="three-news-item">
+							<div class="three-news-image">
+							  <a href="#"><img src="images/5.jpg" class="img-responsive"/></a>
+							</div>
+							<div class="single-post-author-time">
+								<p>আপডেট <i class="fa fa-clock-o" aria-hidden="true"></i> ০৯:৫৯, জানুয়ারি ২৩</p>
+							</div> 		
+							<div class="news-title">
+							   <a href=""><h4>নিম্নচাপের কারনে সারা দেশে শনিবারও থাকবে বৃষ্টি </h4></a>
+							   <h6 class="author"><i class="fa fa-user" aria-hidden="true"></i> উদিসা ইসলাম</h6>
+							</div>
+							<div class="side-content">
+							   <p>সকাল ৬টা থেকেই গ্যাস থাকে না সকাল ৬টা থেকেই গ্যাস থাকে না সকাল...<a href="#"><span>বিস্তারিত</span></a></p>
+							</div>
+				    </div>
+					</div>
+				</div>
+				
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="campus-image">
+						<a href="#"> <img src="images/tara.gif" class="img-responsive" alt="image"/></a>
+					</div>
+					<div class="no-padding col-md-12 col-sm-12 col-xs-12">
+						<div class="three-news-item">
+							<div class="three-news-image">
+							  <a href="#"><img src="images/5.jpg" class="img-responsive"/></a>
+							</div>
+							<div class="single-post-author-time">
+								<p>আপডেট <i class="fa fa-clock-o" aria-hidden="true"></i> ০৯:৫৯, জানুয়ারি ২৩</p>
+							</div> 		
+							<div class="news-title">
+							   <a href=""><h4>নিম্নচাপের কারনে সারা দেশে শনিবারও থাকবে বৃষ্টি </h4></a>
+							   <h6 class="author"><i class="fa fa-user" aria-hidden="true"></i> উদিসা ইসলাম</h6>
+							</div>
+							<div class="side-content">
+							   <p>সকাল ৬টা থেকেই গ্যাস থাকে না সকাল ৬টা থেকেই গ্যাস থাকে না সকাল...<a href="#"><span>বিস্তারিত</span></a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="left-side-add-image">
+					  <a href="#"><img src="images/t.gif" class="img-responsive" alt="image"/></a>
+					</div>
+					
+					<div class="no-padding col-md-12 col-sm-12 col-xs-12">
+						<div class="three-news-item">
+							<div class="three-news-image">
+							  <a href="#"><img src="images/5.jpg" class="img-responsive"/></a>
+							</div>
+							<div class="single-post-author-time">
+								<p>আপডেট <i class="fa fa-clock-o" aria-hidden="true"></i> ০৯:৫৯, জানুয়ারি ২৩</p>
+							</div> 		
+							<div class="news-title">
+							   <a href=""><h4>নিম্নচাপের কারনে সারা দেশে শনিবারও থাকবে বৃষ্টি </h4></a>
+							   <h6 class="author"><i class="fa fa-user" aria-hidden="true"></i> উদিসা ইসলাম</h6>
+							</div>
+							<div class="side-content">
+							   <p>সকাল ৬টা থেকেই গ্যাস থাকে না সকাল ৬টা থেকেই গ্যাস থাকে না সকাল...<a href="#"><span>বিস্তারিত</span></a></p>
+							</div>
+				    </div>
+					</div>
+				</div>
+				
+				
+				
+				
+				
+				
+				
+			</div>
+                    
+        </div>          
+    </div>
+</section>
+
+
+
+
+
+<!-- ============footer start=============-->
+<section>
+ <footer>
+  <div class="container">
+    <div class="row">
+		<div class="col-md-4 ">
+         <div class="site-image">
+            <a href="#"><img src="images/footlogo.png" class="img-responsive" alt="image"/></a>
+         </div>
+       </div>
+        <div class="col-md-4 border-l border-r">
+         <address>
+          <h3>সম্পাদক : আবু বকর </h3>
+          <p>প্রকাশক : জাকারিয়া চৌধুরী কর্তৃক <br>
+               ফোনঃ +৮৮-০২-৫৫০৪৪৯৪৩-৫<br>
+          ই-মেইল : info@manobkantha.com</p>
+          </address>
+        </div>
+		<div class="col-md-4">
+         <address>
+          <h3>ভারপ্রাপ্ত সম্পাদক : সাইফুল আলম, </h3>
+          <p>যমুনা প্রিন্টিং এন্ড পাবলিশিং লিঃ<br>
+               ফোনঃ +৮৮-০২-৫৫০৪৪৯৪৩-৫<br>
+          ই-মেইল : info@manobkantha.com</p>
+          </address>
+        </div>
+       
+    </div>
+  </div>
+ </footer> 
+</section>
+<section>
+	<div class="container">
+		<div class="row">
+			<p style="text-align:center;"‍>সর্বস্বত্ত্ব সংরক্ষিত, এই ওয়েব সাইটের যেকোন লিখা, ছবি, ভিডিও অনুমতি ছাড়া ব্যবহার সম্পূর্ন বেআইনি</p>
+		</div>
+	</div>
+	
+</section>
+<section class="copyright">
+    <div class="container">
+       <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="pull-left">
+            <p>Copyright © cvoice24.com 2018</p>
+          </div>
+       </div>
+       <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="pull-right">
+           <a href="#"> <p>Design & Developed by: Muktodhara Technology Ltd.</p></a>
+          </div>
+       </div>
+    </div>
+</section>
+<!-- ============footer=============-->
+<script src="js/jquery-2.1.1.js"></script>
+	
+	<!-- Core JavaScript Files -->  	 
+<script src="js/bootstrap.min.js"></script>
+
+    <script src="js/ticker.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+</body>
+</html>
+
